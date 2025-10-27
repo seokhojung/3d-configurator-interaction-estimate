@@ -1,0 +1,27 @@
+epic: 1
+story: 1
+title: Template Metadata and Basic CRUD API
+file: docs/stories/1.1.story.md
+decision: PASS
+readiness: 0.85
+confidence: High
+rationale:
+  - AC1/2/4/5/6 구현 충족 확인
+  - 표준 에러 계약 및 Location 헤더 구현
+  - 최소 스켈레톤 단계에서의 개발 진행 양호
+concerns:
+  - GET 목록에서 인증 강제가 없어 "authenticated user" 제약 미반영
+  - storage_path 검증이 정규식 기반 placeholder(실 스토리지 HEAD/metadata 미연동)
+  - 페이지네이션 파라미터 미정(확장성 측면 권장)
+required_actions: []
+recommended_actions:
+  - 목록 결과 스코프 정책 명시(전사/작성자/역할 기반 중 선택)
+  - storage_path 존재 확인을 실 스토리지 연동으로 전환
+  - E2E 스모크에 401/404 시나리오 포함
+artifacts:
+  - docs/prd/acceptance-criteria.md
+  - docs/prd/rls-and-permissions.md
+  - docs/prd/test-strategy-and-standards.md
+  - src/api/templates.ts
+  - src/lib/templates/validation.ts
+  - src/lib/templates/service.ts
