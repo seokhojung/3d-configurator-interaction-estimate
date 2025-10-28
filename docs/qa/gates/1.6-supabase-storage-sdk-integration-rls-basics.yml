@@ -1,0 +1,37 @@
+story: 1.6
+epic: 1
+title: Supabase Storage SDK Integration + RLS Basics
+status: PASS
+reviewed_by: QA Quinn
+date: 2025-10-28
+summary: |
+  SDK 사용 가능 래퍼로 업로드/경로 검증을 일원화하고, 오류 계약과 권한 원칙을 준수함.
+  유닛/통합 테스트 및 문서 앵커 검사 통과. 운영 환경에서는 ENV로 실 SDK 경로 활성화 가능.
+details:
+  acceptance_criteria:
+    - id: AC1
+      result: PASS
+      note: 업로드 API 201/401/422/503 계약 유지 및 { storage_path } 반환
+    - id: AC2
+      result: PASS
+      note: storage_path 존재성 검증을 SDK 메타/HEAD 경로로 일원화(설계 반영)
+    - id: AC3
+      result: PASS
+      note: 버킷 private/Service Role 전용 원칙 및 ENV 키 사용 규정 반영
+    - id: AC4
+      result: PASS
+      note: 오류 우선순위 401>404/403>422>400/503 및 표준 포맷 유지
+    - id: AC5
+      result: PASS
+      note: Unit/Integration 커버리지 충족 및 그린
+    - id: AC6
+      result: PASS
+      note: 문서 앵커 검사 통과
+risks:
+  - SDK 실제 경로는 비동기 특성으로 테스트에서 스텁으로 검증됨(운영 활성 시 비동기화 리팩토링 고려)
+  - Service Role Key 비노출/서버 전용 관리 준수 필요
+  - YAML 파싱은 휴리스틱 기반(정식 파서/스키마 도입 권고)
+evidence:
+  unit: npm run test:unit (passed)
+  integration: npm run test:integration (passed)
+  docs_check: npm run docs:check (passed)

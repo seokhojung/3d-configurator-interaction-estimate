@@ -1,0 +1,19 @@
+epic: 1
+story: 4
+slug: template-update-delete-rls
+title: Template Update/Delete + RLS
+decision: PASS
+rationale: |
+  Owner-only update/delete implemented with clear error contract and priority
+  ordering. Unit/integration tests cover 401/404/403/422/400/200/204 branches.
+evidence:
+  unit: npm run test:unit (passed)
+  integration: npm run test:integration (passed)
+risks:
+  - In-memory store placeholder (Supabase integration pending in FR2)
+  - Audit logging/history not implemented (non-blocking)
+recommendations:
+  - Preserve error contract and RLS rules when integrating Supabase
+  - Consider audit logging and updated_at in follow-up stories
+reviewer: QA - Quinn
+date: 2025-10-28

@@ -1,0 +1,27 @@
+{
+    "name": "3d-configurator-interaction-estimate",
+    "version": "0.1.0",
+    "private": true,
+    "description": "Test infrastructure setup for unit/integration/E2E per Story 1.2",
+    "engines": {
+        "node": ">=18 <=22"
+    },
+    "scripts": {
+        "test": "vitest run tests/unit tests/integration",
+        "test:unit": "vitest run --dir tests/unit",
+        "test:integration": "vitest run --dir tests/integration",
+        "test:watch": "vitest",
+        "e2e": "playwright test",
+        "docs:check": "node scripts/docs-check.mjs"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.0.0",
+        "@types/node": "^20.0.0",
+        "playwright": "^1.0.0",
+        "typescript": "^5.0.0",
+        "vitest": "^1.0.0"
+    },
+    "dependencies": {
+        "yaml": "^2.8.1"
+    }
+}

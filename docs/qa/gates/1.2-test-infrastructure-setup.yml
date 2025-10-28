@@ -1,0 +1,18 @@
+schema: 1
+story: "1.2"
+story_title: "Story 1.2 — Test Infrastructure Setup"
+gate: "PASS"
+status_reason: "테스트 인프라 스크립트/TS 설정/디렉터리/글롭/가이드 문서화 완료, 유닛/통합 테스트 기준선이 로컬에서 정상 실행됨. E2E 브라우저 설치/실행은 후속 스토리로 분리."
+reviewer: "Quinn (Test Architect)"
+updated: "2025-10-28T00:00:00Z"
+
+waiver: { active: false }
+
+top_issues: []
+
+risk_summary:
+  totals: { critical: 0, high: 0, medium: 0, low: 0 }
+  recommendations:
+    must_fix: []
+    monitor: []
+

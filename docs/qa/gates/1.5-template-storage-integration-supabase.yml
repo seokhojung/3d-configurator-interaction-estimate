@@ -1,0 +1,36 @@
+story: 1.5
+epic: 1
+title: Template Storage Integration (Supabase)
+status: PASS
+reviewed_by: QA Quinn
+date: 2025-10-28
+summary: |
+  Upload API(201/422/503/401)와 메타데이터 경로 검증(400/503) 통합이 수용 기준에 부합.
+  유닛/통합 테스트 및 문서 앵커 검사 통과.
+details:
+  acceptance_criteria:
+    - id: AC1
+      result: PASS
+      note: POST /api/templates/files 201 + { storage_path } 반환
+    - id: AC2
+      result: PASS
+      note: MIME/확장자/크기/스키마 실패 422
+    - id: AC3
+      result: PASS
+      note: STORAGE_UNAVAILABLE → 503 매핑
+    - id: AC4
+      result: PASS
+      note: 인증 미제공/무효 401
+    - id: AC5
+      result: PASS
+      note: POST/PUT에서 storage_path 존재성 검증 통합
+    - id: AC6
+      result: PASS
+      note: 오류 우선순위 401 > 404/403 > 422 > 400/503 일관
+risks:
+  - YAML 파싱은 휴리스틱 기반(정식 파서/스키마 도입 권고)
+  - 실 Supabase SDK/버킷 권한/RLS 연동은 후속 스토리 범위
+evidence:
+  unit: npm run test:unit (passed)
+  integration: npm run test:integration (passed)
+  docs_check: npm run docs:check (passed)

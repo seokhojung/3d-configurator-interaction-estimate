@@ -3,8 +3,10 @@ import { CreateTemplateInput, ErrorBody, TemplateType } from './types';
 export const ERROR = {
   VALIDATION_ERROR: 'VALIDATION_ERROR',
   STORAGE_PATH_INVALID: 'STORAGE_PATH_INVALID',
+  STORAGE_UNAVAILABLE: 'STORAGE_UNAVAILABLE',
   UNAUTHORIZED: 'UNAUTHORIZED',
   NOT_FOUND: 'NOT_FOUND',
+  FORBIDDEN: 'FORBIDDEN',
 } as const;
 
 export function isTemplateType(v: unknown): v is TemplateType {
@@ -34,3 +36,8 @@ export function storagePathSeemsValid(path: string): boolean {
   return /^supabase:\/\/templates\/.+/.test(path);
 }
 
+// For PUT (full update) semantics we can reuse create validation
+// to require name/type/storage_path. Version remains optional.
+export function validateUpdateInput(body: CreateTemplateInput): ErrorBody | null {
+  return validateCreateInput(body);
+}

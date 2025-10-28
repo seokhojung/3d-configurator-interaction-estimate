@@ -18,6 +18,65 @@
 
 # Project Agents
 
+## BMAD Workflow Enforcement (필수 절차)
+- 표준 단계: 개발 → 테스트 → 체크리스트 체크 → QA 게이트 → 상태 변경
+- 적용 범위: 모든 스토리(`docs/stories/*.story.md`)와 관련 산출물
+- 세부 규칙
+  - 개발(Dev)
+    - 구현 완료 후 즉시 테스트 실행: `npm run test:unit`, `npm run test:integration`
+    - 스토리 파일 Dev Agent Record만 갱신(디버그/완료 노트/파일 리스트)
+  - 체크리스트(SM/Dev)
+    - 스토리의 Tasks / Subtasks를 최신 상태로 반영([x] 체크)
+    - 문서 앵커/링크 검증: `npm run docs:check`
+  - QA 게이트(QA)
+    - 스토리 내 `## QA Results` 섹션 작성(AC별 판단/리스크/근거)
+    - 게이트 파일 생성: `docs/qa/gates/{epic}.{story}-{slug}.yml`
+  - 상태 변경(PO)
+    - Ready 이상에서 Dev 착수, QA PASS 후 Done으로 승격
+    - Change Log에 승인 이력 기록
+- 금지 사항
+  - `<!-- BEGIN: BMAD-AGENTS --> … <!-- END -->` 영역 직접 수정 금지
+- 스토리 파일에서 Dev 에이전트는 Dev Agent Record 외 섹션 수정 금지
+
+### 역할별 체크리스트 명시(권고)
+- Scrum Master(SM)
+  - 체크리스트: Story Draft Checklist (`.bmad-core/checklists/story-draft-checklist.md`)
+  - 실행: IDE에서 "As sm, *story-checklist" (내부적으로 `execute-checklist` 태스크 실행)
+- Developer(Dev)
+  - 체크리스트: Story DoD Checklist (`.bmad-core/checklists/story-dod-checklist.md`)
+  - 실행: 구현/테스트 완료 후 "As dev, *develop-story" 플로우 마지막 단계에서 `execute-checklist` 수행
+  - 완료 조건(요약):
+    - Unit/Integration 테스트 통과(`npm run test:unit`, `npm run test:integration`)
+    - 문서 앵커 검사 통과(`npm run docs:check`)
+    - Tasks/Subtasks 체크박스 최신화, File List 반영, Error 계약 검증
+    - 스토리 Status를 `Ready for Review`로 갱신(Dev 권한 범위에서만)
+- QA
+  - 체크리스트/게이트: QA Review/Gate (`qa-gate.md`, `review-story.md`)
+  - 실행: "As qa, *review {story}" → 스토리의 `## QA Results` 섹션 작성 + 게이트 파일 생성(`docs/qa/gates/{epic}.{story}-{slug}.yml`)
+- Product Owner(PO)
+  - 체크리스트: PO Master Checklist (`.bmad-core/checklists/po-master-checklist.md`)
+  - 실행: "As po, *execute-checklist-po" 또는 변경 시 "*correct-course" 보조
+  - 승인/상태 변경: QA PASS 이후 스토리 Status를 `Done`으로 승격, Change Log에 기록
+
+## Story Creation (스토리 생성 절차)
+- 역할/트리거
+  - Scrum Master가 `as sm, *draft`로 시작 (BMAD 공식 태스크: `.bmad-core/tasks/create-next-story.md`)
+- 준비/입력
+  - `./.bmad-core/core-config.yaml` 로드: `devStoryLocation`, `prd.*`, `architecture.*`
+  - 기존 스토리 상태 확인: 최신 번호가 Done인지 확인 후, 미완 존재 시 사용자에 알리고 진행 여부 결정
+- 단계
+  - 다음 스토리 식별: 에픽 진행 순서 준수(자동으로 다른 에픽으로 건너뛰지 않음)
+  - 요구 수집: PRD(에픽/AC)에서 해당 범위 추출, 직전 스토리 Dev Agent Record(Completion Notes/Debug Log) 요점 반영
+  - 아키텍처 맥락: 스토리 유형별로 필요한 문서만 읽어 요약(tech-stack, coding-standards, source-tree, test-strategy 등)
+  - 구조 정합성: 프로젝트 구조 가이드와 경로/파일 배치 일치 여부 확인 및 메모
+  - 스토리 템플릿 작성(Draft): Title/Status(Draft)/Story/AC/Dev Notes/Tasks/Project Structure Notes/Testing를 섹션별로 채움
+  - 레퍼런스/앵커: 문서 섹션 앵커로 구체화하고 `npm run docs:check`로 유효성 검증
+  - 체크리스트 실행(SM): `*story-checklist`(또는 execute-checklist)로 “Story Draft Checklist” 실행(YOLO 권장) 후 보완
+  - PO 검증: `as po, *validate-story-draft {story}`로 승인. 승인 시 Status를 Ready로 변경하고 Change Log 기록
+- 산출물
+  - 새 스토리: `docs/stories/{epic}.{n}.story.md` (Status: Ready)
+  - 체크리스트 보완 반영, 링크/앵커 유효
+
 This file provides guidance and memory for Codex CLI.
 
 <!-- BEGIN: BMAD-AGENTS -->
@@ -5365,5 +5424,3 @@ Choose a number (0-8) or 9 to proceed:
 ```
 
 <!-- END: BMAD-AGENTS -->
-
-
