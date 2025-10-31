@@ -1,0 +1,78 @@
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v1.6.1 C:/Users/apf_temp_admin/Desktop/3d-Configurator-interaction-estimate
+
+ ✓ tests/integration/templates-update-delete.int.spec.ts  (2 tests) 5ms
+ ✓ tests/integration/templates.int.spec.ts  (4 tests) 5ms
+ ✓ tests/integration/templates/templates-list.int.spec.ts  (2 tests) 12ms
+ ✓ tests/integration/templates/templates-schema-validate.int.spec.ts  (3 tests) 3ms
+ ✓ tests/integration/pdf/pdf-generate.int.spec.ts  (4 tests) 3ms
+ ✓ tests/integration/pdf/pdf-generate-mapping.int.spec.ts  (2 tests) 3ms
+ ✓ tests/integration/templates-files.int.spec.ts  (6 tests) 14ms
+
+<--- Last few GCs --->
+
+[22660:000001CA1AA85000]   569545 ms: Scavenge 4041.2 (4127.5) -> 4027.0 (4128.2) MB, pooled: 2 MB, 9.43 / 0.00 ms  (average mu = 0.167, current mu = 0.082) allocation failure; 
+[22660:000001CA1AA85000]   570667 ms: Mark-Compact 4042.3 (4128.7) -> 4022.6 (4128.5) MB, pooled: 1 MB, 1096.01 / 0.00 ms  (average mu = 0.217, current mu = 0.275) allocation failure; scavenge might not succeed
+
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF643E0BD7B node::SetCppgcReference+16011
+ 2: 00007FF643D74BC8 DSA_meth_get_flags+92344
+ 3: 00007FF644902C31 v8::Isolate::ReportExternalAllocationLimitReached+65
+ 4: 00007FF6448EFA36 v8::Function::Experimental_IsNopFunction+2918
+ 5: 00007FF64473B6E0 v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+31552
+ 6: 00007FF6447353AD v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+6157
+ 7: 00007FF644730C45 v8::internal::ThreadIsolation::JitPageReference::Size+190789
+ 8: 00007FF6440AA2DD BIO_ssl_shutdown+189
+
+<--- Last few GCs --->
+
+[23860:000001F5CA7FD000]   600788 ms: Scavenge 4040.9 (4128.0) -> 4026.8 (4128.0) MB, pooled: 1 MB, 8.95 / 0.00 ms  (average mu = 0.277, current mu = 0.322) allocation failure; 
+[23860:000001F5CA7FD000]   601979 ms: Mark-Compact 4042.1 (4128.2) -> 4022.4 (4128.5) MB, pooled: 1 MB, 1163.35 / 0.00 ms  (average mu = 0.268, current mu = 0.260) allocation failure; scavenge might not succeed
+
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF643E0BD7B node::SetCppgcReference+16011
+ 2: 00007FF643D74BC8 DSA_meth_get_flags+92344
+ 3: 00007FF644902C31 v8::Isolate::ReportExternalAllocationLimitReached+65
+ 4: 00007FF6448EFA36 v8::Function::Experimental_IsNopFunction+2918
+ 5: 00007FF64473B6E0 v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+31552
+ 6: 00007FF6447353AD v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+6157
+ 7: 00007FF644730C45 v8::internal::ThreadIsolation::JitPageReference::Size+190789
+ 8: 00007FF6440AA2DD BIO_ssl_shutdown+189
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 2 unhandled errors during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: Worker exited unexpectedly
+ ❯ ChildProcess.<anonymous> node_modules/tinypool/dist/esm/index.js:185:34
+ ❯ ChildProcess.emit node:events:530:35
+ ❯ ChildProcess._handle.onexit node:internal/child_process:293:12
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: Worker exited unexpectedly
+ ❯ ChildProcess.<anonymous> node_modules/tinypool/dist/esm/index.js:185:34
+ ❯ ChildProcess.emit node:events:530:35
+ ❯ ChildProcess._handle.onexit node:internal/child_process:293:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+ Test Files  7 passed (9)
+      Tests  23 passed (29)
+     Errors  2 errors
+   Start at  16:14:43
+   Duration  602.36s (transform 259ms, setup 1.46s, collect 1.11s, tests 45ms, environment 6.63s, prepare 2.56s)
+

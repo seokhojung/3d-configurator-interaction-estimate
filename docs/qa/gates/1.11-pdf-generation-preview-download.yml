@@ -1,0 +1,39 @@
+story: 1.11
+epic: 1
+title: PDF Generation: Preview/Download
+status: PASS
+reviewed_by: QA Quinn
+date: 2025-10-31
+summary: |
+  Windows(Node 22.x) 환경에서 설치/실행 일원화 후 유닛/통합 테스트 모두 PASS.
+  Vitest 안정화 설정(`pool: forks`, `globals: false`, `environment: happy-dom`,
+  `esbuild.target: node20`)과 완료 마커(`::VITEST_DONE SUITE=... CODE=0`) 도입으로
+  완료 인식 문제 해소. AC 전 범위 충족을 최종 확인하였다.
+details:
+  acceptance_criteria:
+    - id: AC1
+      result: PASS
+      note: 버튼 제공/요청 페이로드 생성·호출, 미리보기/다운로드 구현
+    - id: AC2
+      result: PASS
+      note: 로딩/타임아웃(5초)/오류 코드 매핑 처리 및 사용자 메시지
+    - id: AC3
+      result: PASS
+      note: aria-label/aria-busy, role=alert + aria-live=assertive 적용
+    - id: AC4
+      result: PASS
+      note: templateId 유지, 입력 변경 시 미리보기 초기화(캐시 무효화)
+    - id: AC5
+      result: PASS
+      note: 테스트 케이스 충실하며 Windows(Node 22.x)에서 실행 검증 PASS
+    - id: AC6
+      result: PASS
+      note: 문서 앵커 유효, Dev 기록상 docs:check 통과
+risks:
+  - 대용량 Base64 data URL 사용 시 성능/메모리 리스크 → Blob/스트리밍 고려 권고
+  - 오류 코드 스펙 확장 대비 사용자 메시지 매핑 테이블 보강 및 i18n 필요
+  - 캐시 무효화 전략은 상태 초기화 중심으로 충족하나, 공유 캐시 도입 시 키 설계 필요
+evidence:
+  unit: tests/unit/pdf/pdf-request.spec.ts
+  integration: tests/integration/templates/templates-edit-pdf.int.spec.tsx
+  docs_anchor: docs/prd/acceptance-criteria.md#fr3-pdf-다운로드-interactive-pdf

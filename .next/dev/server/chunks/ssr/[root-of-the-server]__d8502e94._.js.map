@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/apf_temp_admin/Desktop/3d-Configurator-interaction-estimate/src/app/page.tsx"],"sourcesContent":["import React from 'react';\n\nexport default function HomePage() {\n  return (\n    <main>\n      <h1>3D Configurator — Templates</h1>\n      <a href=\"/templates\">Go to Templates</a>\n    </main>\n  );\n}\n\n"],"names":[],"mappings":";;;;;;AAEe,SAAS;IACtB,qBACE,0SAAC;;0BACC,0SAAC;0BAAG;;;;;;0BACJ,0SAAC;gBAAE,MAAK;0BAAa;;;;;;;;;;;;AAG3B","debugId":null}}]
+}

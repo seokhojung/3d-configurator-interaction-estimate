@@ -24,10 +24,11 @@ export function existsStoragePath(
     if (!parsed) return { ok: true, exists: false };
 
     if (useRealSdk()) {
-      // Lazy dynamic import to avoid hard dependency when SDK is unavailable.
+      // Lazy, bundler-opaque require to avoid build-time resolution errors in Next dev
       try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const { createClient } = require('@supabase/supabase-js');
+        // eslint-disable-next-line no-eval
+        const req: any = (0, eval)('require');
+        const { createClient } = req('@supabase/supabase-js');
         const client = createClient(process.env.SUPABASE_URL as string, process.env.SUPABASE_SERVICE_ROLE_KEY as string);
         // HEAD via list with prefix limited to exact key; reduce network when possible.
         // Note: in this environment tests run without SDK; this branch is only used when explicitly enabled.
@@ -63,8 +64,9 @@ export function uploadTemplateContent(params: {
 
     if (useRealSdk()) {
       try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const { createClient } = require('@supabase/supabase-js');
+        // eslint-disable-next-line no-eval
+        const req: any = (0, eval)('require');
+        const { createClient } = req('@supabase/supabase-js');
         const client = createClient(process.env.SUPABASE_URL as string, process.env.SUPABASE_SERVICE_ROLE_KEY as string);
         const storage = client.storage.from(bucket);
         const file = new Blob([params.content], { type: params.contentType || 'application/octet-stream' });

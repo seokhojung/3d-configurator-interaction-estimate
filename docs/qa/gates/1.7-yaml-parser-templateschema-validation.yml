@@ -1,0 +1,38 @@
+story: 1.7
+epic: 1
+title: YAML Parser + TemplateSchema Validation
+status: PASS
+reviewed_by: QA Quinn
+date: 2025-10-29
+summary: |
+  YAML 정식 파서 도입 및 공통 TemplateSchema 검증 경로 일원화로
+  파싱/스키마 오류가 422 VALIDATION_ERROR 표준 포맷으로 상세 보고됨.
+  오류 우선순위/에러 포맷 계약 준수, 업로드 성공 응답 201 + { storage_path } 유지.
+details:
+  acceptance_criteria:
+    - id: AC1
+      result: PASS
+      note: YAML 파싱 실패 시 422 { code: VALIDATION_ERROR, details.reason } 제공, 파일 정책(확장자/MIME/≤5MB) 유지
+    - id: AC2
+      result: PASS
+      note: JSON/YAML 공통 TemplateSchema 검증 및 위반 상세(missing[], typeErrors[]) 제공
+    - id: AC3
+      result: PASS
+      note: 오류 우선순위 401>404/403>422>400/503 및 { code, message, details? } 포맷 일관 유지
+    - id: AC4
+      result: PASS
+      note: 유닛/통합 테스트로 성공/실패 경로 전수 커버
+    - id: AC5
+      result: PASS
+      note: 문서 앵커/링크 검사 통과 (docs:check)
+    - id: AC6
+      result: PASS
+      note: 업로드 성공 응답 201 + { storage_path } 유지
+risks:
+  - YAML 1.2 anchors/aliases/merge keys 등 고급 기능의 스키마 불일치 회귀 위험(회귀 테스트 보강 권고)
+  - 파싱 복잡도 악용(YAML bomb) 가능성: 파서 옵션/타임아웃/노드 수 제한 검토 권고
+  - 에러 세부 필드(reason/typeErrors) 클라이언트 계약 문서화 필요
+evidence:
+  unit: npm run test:unit (passed)
+  integration: npm run test:integration (passed)
+  docs_check: npm run docs:check (passed)

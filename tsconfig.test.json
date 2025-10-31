@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "module": "ESNext",
+    "types": ["node", "vitest", "@testing-library/jest-dom"]
+  },
+  "include": ["tests/**/*", "src/**/*"]
+}

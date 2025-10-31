@@ -1,0 +1,3 @@
+module.exports=[70828,a=>{a.n(a.i(98508))},30978,a=>{a.n(a.i(26522))},26133,a=>{a.n(a.i(23302))},40906,a=>{a.n(a.i(544))},48512,a=>{a.n(a.i(20287))},12891,a=>{"use strict";var b=a.i(27407);function c(){return(0,b.jsxs)("main",{children:[(0,b.jsx)("h1",{children:"3D Configurator — Templates"}),(0,b.jsx)("a",{href:"/templates",children:"Go to Templates"})]})}a.s(["default",()=>c])}];
+
+//# sourceMappingURL=Desktop_3d-Configurator-interaction-estimate_6934a3f7._.js.map

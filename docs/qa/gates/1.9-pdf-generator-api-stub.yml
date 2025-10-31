@@ -1,0 +1,33 @@
+story: 1.9
+epic: 1
+title: PDF Generator API Contract/Stub
+status: PASS
+reviewed_by: QA Quinn
+date: 2025-10-29
+summary: |
+  `POST /api/pdf/generate` 스텁이 계약에 맞게 구현되어 `{ pdf_base64 }` 반환과
+  처리 시간 헤더 `x-processing-ms`를 제공함. 401/404/422 경로 테스트 및 문서 앵커 검사 통과.
+details:
+  acceptance_criteria:
+    - id: AC1
+      result: PASS
+      note: 엔드포인트/요청·응답·오류 계약 정의 및 구현. 스텁 Content-Type JSON 확인.
+    - id: AC2
+      result: PASS (주의)
+      note: template_id 존재 확인/데이터 객체성 검증은 수행. 1.7 유틸 기반 스키마 대조는 미적용(후속 보강 권고).
+    - id: AC3
+      result: PASS
+      note: `x-processing-ms` 헤더로 처리 시간 노출 구현.
+    - id: AC4
+      result: PASS (주의)
+      note: 성공/401/404/422 테스트 커버. 503 시나리오 테스트는 미포함(경미, 보강 권고).
+    - id: AC5
+      result: PASS
+      note: 문서 앵커 검사 통과.
+risks:
+  - 입력 데이터와 스키마 대조 미적용으로 인한 조기 검증 누락 위험(후속 강화 필요).
+  - 503 에러 경로의 테스트 부재로 운영 시 일시적 장애 매핑 회귀 위험.
+evidence:
+  unit: npm run test:unit (passed)
+  integration: npm run test:integration (passed)
+  docs_check: npm run docs:check (passed)

@@ -1,0 +1,37 @@
+story: 1.8
+epic: 1
+title: Template Selection Page (MVP)
+status: PASS
+reviewed_by: QA Quinn
+date: 2025-10-29
+summary: |
+  템플릿 목록/필터/선택 및 `?templateId=` 진행 링크를 포함한 최소 UI가 구현되었고,
+  API 클라이언트 기준 에러 계약(401) 및 정렬/그룹이 테스트로 검증됨. 문서 앵커 검사 및 빌드 성공.
+details:
+  acceptance_criteria:
+    - id: AC1
+      result: PASS (주의)
+      note: 목록/유형/정렬/빈 상태 충족. UI의 API 오류 메시지 표출은 후속 API 연동 전환 시 반영 권고.
+    - id: AC2
+      result: PASS
+      note: 클릭/키보드 선택 및 `?templateId=` 링크로 전달 확인.
+    - id: AC3
+      result: PASS
+      note: 오류 우선순위/포맷은 API 클라이언트 경로에서 검증. UI 경로 연결은 후속 권고.
+    - id: AC4
+      result: PASS
+      note: a11y(role=list/listitem, aria-selected, 키보드 내비게이션) 충족.
+    - id: AC5
+      result: PASS
+      note: Unit/Integration 테스트 통과.
+    - id: AC6
+      result: PASS
+      note: 문서 앵커 검사 통과.
+risks:
+  - UI가 현재 서비스 계층 직접 조회(인메모리)로 렌더링되어 서버 에러 표출 경로 미적용. API 연동 전환 시 에러 UI 연결 필요.
+  - 실제 Supabase/라우트 핸들러 연동 시 비동기 I/O와 ENV 보안 구성 검토 필요.
+evidence:
+  unit: npm run test:unit (passed)
+  integration: npm run test:integration (passed)
+  docs_check: npm run docs:check (passed)
+  build: npm run build (passed)

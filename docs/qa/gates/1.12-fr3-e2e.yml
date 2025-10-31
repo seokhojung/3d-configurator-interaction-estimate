@@ -1,0 +1,41 @@
+story: 1.12
+epic: 1
+title: FR3 E2E — Preview/Download/Timeout/A11y
+status: PASS
+reviewed_by: QA Quinn
+date: 2025-10-31
+summary: |
+  Windows(Node 22.x) 환경에서 Next dev 서버 자동 기동(webServer)과 baseURL 설정으로
+  라우팅을 안정화하고, FR3 사용자 흐름의 E2E 4가지 시나리오(성공≤5s, 타임아웃,
+  A11y/로딩, 모드 전환)를 모두 통과했다. 다운로드는 앵커 클릭 기반으로 동작하여
+  Playwright의 download 이벤트 대신 DOM 기반 검증으로 안정화했다.
+details:
+  acceptance_criteria:
+    - id: AC1
+      result: PASS
+      note: 성공 경로(≤5s) 미리보기 헤딩 가시성 검증
+    - id: AC2
+      result: PASS
+      note: 5초 초과 시 PDF_TIMEOUT 한국어 메시지 노출 검증(localStorage 지연 훅)
+    - id: AC3
+      result: PASS
+      note: 요청 중 aria-busy/disabled 및 오류 고지(role=alert/aria-live) 확인
+    - id: AC4
+      result: PASS
+      note: 미리보기↔다운로드 전환 동작 정상, 파일명 패턴 best-effort 확인(앵커 클릭 패치)
+    - id: AC5
+      result: PASS
+      note: 문서 앵커 검사 통과(npm run docs:check)
+risks:
+  - Next dev 모드 경고(Workspace root 추정) 무해하나 CI 대비 root 설정 명시 고려
+  - 다운로드 검증은 앵커 클릭 기반 best-effort로 설계(브라우저 보안 정책에 따라 이벤트 캡처 실패 가능)
+evidence:
+  e2e:
+    - e2e/fr3/success.spec.ts
+    - e2e/fr3/timeout.spec.ts
+    - e2e/fr3/a11y-loading.spec.ts
+    - e2e/fr3/mode-switch.spec.ts
+  config:
+    - playwright.config.ts
+  docs_anchor: docs/prd/acceptance-criteria.md#fr3-pdf-다운로드-interactive-pdf
+

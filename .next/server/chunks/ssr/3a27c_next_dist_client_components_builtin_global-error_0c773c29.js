@@ -1,0 +1,3 @@
+module.exports=[21845,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(14349);a.n(d("[project]/Desktop/3d-Configurator-interaction-estimate/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},93363,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(14349);a.n(d("[project]/Desktop/3d-Configurator-interaction-estimate/node_modules/next/dist/client/components/builtin/global-error.js"))},20287,a=>{"use strict";a.i(21845);var b=a.i(93363);a.n(b)}];
+
+//# sourceMappingURL=3a27c_next_dist_client_components_builtin_global-error_0c773c29.js.map

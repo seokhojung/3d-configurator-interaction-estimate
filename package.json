@@ -1,27 +1,39 @@
 {
-    "name": "3d-configurator-interaction-estimate",
-    "version": "0.1.0",
-    "private": true,
-    "description": "Test infrastructure setup for unit/integration/E2E per Story 1.2",
-    "engines": {
-        "node": ">=18 <=22"
-    },
-    "scripts": {
-        "test": "vitest run tests/unit tests/integration",
-        "test:unit": "vitest run --dir tests/unit",
-        "test:integration": "vitest run --dir tests/integration",
-        "test:watch": "vitest",
-        "e2e": "playwright test",
-        "docs:check": "node scripts/docs-check.mjs"
-    },
-    "devDependencies": {
-        "@playwright/test": "^1.0.0",
-        "@types/node": "^20.0.0",
-        "playwright": "^1.0.0",
-        "typescript": "^5.0.0",
-        "vitest": "^1.0.0"
-    },
-    "dependencies": {
-        "yaml": "^2.8.1"
-    }
+    "name":  "3d-configurator-interaction-estimate",
+    "version":  "0.1.0",
+    "private":  true,
+    "description":  "Test infrastructure setup for unit/integration/E2E per Story 1.2",
+    "engines":  {
+                    "node":  ">=20 <23"
+                },
+    "scripts":  {
+                    "test":  "npm run test:unit && npm run test:integration",
+                    "test:unit":  "scripts\\test-unit.cmd",
+                    "test:integration":  "scripts\\test-integration.cmd",
+                    "test:watch":  "vitest --pool=forks --reporter=dot",
+                    "e2e":  "playwright test",
+                    "docs:check":  "node scripts/docs-check.mjs",
+                    "dev":  "next dev",
+                    "build":  "next build",
+                    "start":  "next start"
+                },
+    "devDependencies":  {
+                            "@playwright/test":  "^1.0.0",
+                            "@testing-library/jest-dom":  "^6.9.1",
+                            "@testing-library/react":  "^16.3.0",
+                            "@types/node":  "^20.0.0",
+                            "@types/react":  "^19.2.2",
+                            "@types/react-dom":  "^19.2.2",
+                            "happy-dom":  "^20.0.10",
+                            "jsdom":  "^27.0.1",
+                            "next":  "^16.0.1",
+                            "playwright":  "^1.0.0",
+                            "react":  "^19.2.0",
+                            "react-dom":  "^19.2.0",
+                            "typescript":  "^5.0.0",
+                            "vitest":  "^1.0.0"
+                        },
+    "dependencies":  {
+                         "yaml":  "^2.8.1"
+                     }
 }

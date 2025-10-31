@@ -5,6 +5,7 @@
         "bmad",
         "Brainwriting",
         "cicd",
+        "Configurator",
         "firmographic",
         "firmographics",
         "hotspots",
@@ -35,7 +36,9 @@
         "unredacted",
         "Vercel",
         "Vite",
+        "vitest",
         "WCAG",
-        "wireframes"
+        "wireframes",
+        "yalm"
     ]
 }

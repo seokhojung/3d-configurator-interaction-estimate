@@ -1,3 +1,7 @@
 # BMAD (local only)
 node_modules/
 
+\n# Ignore Windows reserved device file\n/nul\n
+ 
+# Ignore Windows reserved device file 
+nul 

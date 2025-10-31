@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_not-found/page.js")
+R.c("server/chunks/ssr/Desktop_3d-Configurator-interaction-estimate_7fbef10d._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__1d3aef1e._.js")
+R.c("server/chunks/ssr/3a27c_next_dist_esm_build_templates_app-page_e238056f.js")
+R.c("server/chunks/ssr/[root-of-the-server]__84d7fc99._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__3ff88f93._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__67c76c95._.js")
+R.c("server/chunks/ssr/Desktop_3d-Configurator-interaction-estimate_src_app_layout_tsx_9f66cb6e._.js")
+R.c("server/chunks/ssr/3a27c_next_dist_client_components_b8b9bd98._.js")
+R.c("server/chunks/ssr/3a27c_next_dist_client_components_builtin_forbidden_f813f5ad.js")
+R.c("server/chunks/ssr/2532d_-interaction-estimate__next-internal_server_app__not-found_page_actions_514c5465.js")
+R.m(99990)
+module.exports=R.m(99990).exports

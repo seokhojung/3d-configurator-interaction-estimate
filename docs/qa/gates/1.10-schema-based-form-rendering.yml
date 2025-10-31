@@ -1,0 +1,38 @@
+story: 1.10
+epic: 1
+title: Schema-Based Form Rendering
+status: PASS
+reviewed_by: QA Quinn
+date: 2025-10-30
+summary: |
+  스키마 기반 폼 렌더링과 편집 페이지가 구현되어 최소 타입(text/checkbox/select) 렌더,
+  레이블 연결, aria-live 오류 표시, templateId 변경 시 상태 초기화·포커스 이동을 충족.
+  유닛/통합 테스트 및 문서 앵커 검사 통과.
+  2025-10-30 재검토: 제출 시 최초 오류 필드 포커스 이동(a11y) 구현 및 유닛 테스트 추가 확인. PASS 유지.
+details:
+  acceptance_criteria:
+    - id: AC1
+      result: PASS
+      note: 타입 렌더링 및 pdf_field_name/레이블 연결 확인
+    - id: AC2
+      result: PASS
+      note: 필수/타입/옵션 검증 규칙과 오류 메시지(필드 하단) 구현
+    - id: AC3
+      result: PASS
+      note: 라벨-컨트롤 연결, aria-live 적용(에러 요약/포커스 전략 보강 여지)
+    - id: AC4
+      result: PASS
+      note: 로컬 상태 관리, templateId 변경 시 상태 초기화·첫 필드 포커스 이동
+    - id: AC5
+      result: PASS
+      note: Unit/Integration 케이스 충족
+    - id: AC6
+      result: PASS
+      note: 문서 앵커 검사 통과
+risks:
+  - 최초 오류 필드로 포커스 이동 로직 보강 필요 가능성(접근성 개선)
+  - 실제 스키마 파일 연계 시 불일치/변경에 대한 회귀 위험 → E2E로 보강 권고
+evidence:
+  unit: npm run test:unit (passed)
+  integration: npm run test:integration (passed)
+  docs_check: npm run docs:check (passed)

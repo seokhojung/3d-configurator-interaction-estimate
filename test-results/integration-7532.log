@@ -1,0 +1,11 @@
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v1.6.1 C:/Users/apf_temp_admin/Desktop/3d-Configurator-interaction-estimate
+
+ ✓ tests/integration/templates/templates-schema-validate.int.spec.ts  (3 tests) 3ms
+ ✓ tests/integration/templates.int.spec.ts  (4 tests) 3ms
+ ✓ tests/integration/templates-update-delete.int.spec.ts  (2 tests) 4ms
+ ✓ tests/integration/templates/templates-list.int.spec.ts  (2 tests) 13ms
+ ✓ tests/integration/pdf/pdf-generate.int.spec.ts  (4 tests) 5ms
+ ✓ tests/integration/pdf/pdf-generate-mapping.int.spec.ts  (2 tests) 5ms
+ ✓ tests/integration/templates-files.int.spec.ts  (6 tests) 14ms
